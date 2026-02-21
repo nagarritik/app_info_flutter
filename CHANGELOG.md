@@ -1,3 +1,7 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+* Initial release.
+* Added `getAppName` to retrieve the application name.
+* Added `getPackageName` to retrieve the package identifier/bundle ID.
+* Added `getVersion` to retrieve the project version.
+* Added `getBuildNumber` to retrieve the build/version code.

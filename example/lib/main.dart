@@ -16,7 +16,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+  String _appName = 'Unknown';
+  String _packageName = 'Unknown';
+  String _version = 'Unknown';
+  String _buildNumber = 'Unknown';
   final _appInfoFlutterPlugin = AppInfoFlutter();
 
   @override
@@ -27,32 +30,50 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
+    String appName;
+    String packageName;
+    String version;
+    String buildNumber;
+
     try {
-      platformVersion =
-          await _appInfoFlutterPlugin.getPlatformVersion() ?? 'Unknown platform version';
+      appName = await _appInfoFlutterPlugin.getAppName() ?? 'Unknown';
+      packageName = await _appInfoFlutterPlugin.getPackageName() ?? 'Unknown';
+      version = await _appInfoFlutterPlugin.getVersion() ?? 'Unknown';
+      buildNumber = await _appInfoFlutterPlugin.getBuildNumber() ?? 'Unknown';
     } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      appName = 'Failed to get app info.';
+      packageName = 'Failed to get app info.';
+      version = 'Failed to get app info.';
+      buildNumber = 'Failed to get app info.';
     }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) return;
 
     setState(() {
-      _platformVersion = platformVersion;
+      _appName = appName;
+      _packageName = packageName;
+      _version = version;
+      _buildNumber = buildNumber;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(useMaterial3: true),
       home: Scaffold(
-        appBar: AppBar(title: const Text('Plugin example app')),
-        body: Center(child: Text('Running on: $_platformVersion\n')),
+        appBar: AppBar(title: const Text('App Info Plugin Example')),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('App Name: $_appName'),
+              Text('Package Name: $_packageName'),
+              Text('Version: $_version'),
+              Text('Build Number: $_buildNumber'),
+            ],
+          ),
+        ),
       ),
     );
   }

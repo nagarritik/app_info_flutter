@@ -1,15 +1,49 @@
 # app_info_flutter
 
-A new Flutter plugin project.
+A Flutter plugin to retrieve basic app information like name, package name, version, and build number.
+
+## Features
+
+- Get App Name
+- Get Package Name (Bundle ID)
+- Get Version (e.g., 1.0.0)
+- Get Build Number (e.g., 1)
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/to/develop-plugins),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+Add `app_info_flutter` as a dependency in your `pubspec.yaml` file.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```yaml
+dependencies:
+  app_info_flutter: ^1.0.0
+```
 
+## Usage
+
+```dart
+import 'package:app_info_flutter/app_info_flutter.dart';
+
+final _appInfoFlutterPlugin = AppInfoFlutter();
+
+// Get App Name
+String? appName = await _appInfoFlutterPlugin.getAppName();
+
+// Get Package Name
+String? packageName = await _appInfoFlutterPlugin.getPackageName();
+
+// Get Version
+String? version = await _appInfoFlutterPlugin.getVersion();
+
+// Get Build Number
+String? buildNumber = await _appInfoFlutterPlugin.getBuildNumber();
+```
+
+## Platform Support
+
+| Android | iOS |
+|:---:|:---:|
+| ✅ | ❌ |
+
+## License
+
+MIT License - see the [LICENSE](LICENSE) file for details.

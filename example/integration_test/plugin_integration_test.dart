@@ -14,11 +14,27 @@ import 'package:app_info_flutter/app_info_flutter.dart';
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('getPlatformVersion test', (WidgetTester tester) async {
+  testWidgets('getAppName test', (WidgetTester tester) async {
     final AppInfoFlutter plugin = AppInfoFlutter();
-    final String? version = await plugin.getPlatformVersion();
-    // The version string depends on the host platform running the test, so
-    // just assert that some non-empty string is returned.
+    final String? name = await plugin.getAppName();
+    expect(name?.isNotEmpty, true);
+  });
+
+  testWidgets('getPackageName test', (WidgetTester tester) async {
+    final AppInfoFlutter plugin = AppInfoFlutter();
+    final String? packageName = await plugin.getPackageName();
+    expect(packageName?.isNotEmpty, true);
+  });
+
+  testWidgets('getVersion test', (WidgetTester tester) async {
+    final AppInfoFlutter plugin = AppInfoFlutter();
+    final String? version = await plugin.getVersion();
     expect(version?.isNotEmpty, true);
+  });
+
+  testWidgets('getBuildNumber test', (WidgetTester tester) async {
+    final AppInfoFlutter plugin = AppInfoFlutter();
+    final String? buildNumber = await plugin.getBuildNumber();
+    expect(buildNumber?.isNotEmpty, true);
   });
 }

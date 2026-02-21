@@ -10,10 +10,30 @@ class MethodChannelAppInfoFlutter extends AppInfoFlutterPlatform {
   final methodChannel = const MethodChannel('app_info_flutter');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>(
-      'getPlatformVersion',
+  Future<String?> getAppName() async {
+    final appName = await methodChannel.invokeMethod<String>('getAppName');
+    return appName;
+  }
+
+  @override
+  Future<String?> getPackageName() async {
+    final packageName = await methodChannel.invokeMethod<String>(
+      'getPackageName',
     );
+    return packageName;
+  }
+
+  @override
+  Future<String?> getVersion() async {
+    final version = await methodChannel.invokeMethod<String>('getVersion');
     return version;
+  }
+
+  @override
+  Future<String?> getBuildNumber() async {
+    final buildNumber = await methodChannel.invokeMethod<String>(
+      'getBuildNumber',
+    );
+    return buildNumber;
   }
 }
