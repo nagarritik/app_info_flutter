@@ -23,18 +23,22 @@ abstract class AppInfoFlutterPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  /// Returns the application name.
   Future<String?> getAppName() {
     throw UnimplementedError('getAppName() has not been implemented.');
   }
 
+  /// Returns the package name (Android) or bundle identifier (iOS).
   Future<String?> getPackageName() {
     throw UnimplementedError('getPackageName() has not been implemented.');
   }
 
+  /// Returns the version of the application.
   Future<String?> getVersion() {
     throw UnimplementedError('getVersion() has not been implemented.');
   }
 
+  /// Returns the build number of the application.
   Future<String?> getBuildNumber() {
     throw UnimplementedError('getBuildNumber() has not been implemented.');
   }
