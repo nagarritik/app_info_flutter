@@ -1,11 +1,11 @@
 name: app_info_flutter
-description: A Flutter plugin to retrieve basic app information like name, package name, version, and build number.
-version: 1.0.1
+description: A Flutter plugin to retrieve basic app information like name, package name, version, build number, and other app metadata.
+version: 1.1.0
 repository: https://github.com/nagarritik/app_info_flutter
 
 environment:
   sdk: ^3.11.0
-  flutter: '>=3.3.0'
+  flutter: ">=3.3.0"
 
 dependencies:
   flutter:
